@@ -1,5 +1,6 @@
 import Counter from "./components/counter.jsx";
 import Button from "./components/button.jsx";
+import Input from "./components/input.jsx";
 import React, {useState} from "react";
 
 import './App.css'
@@ -60,12 +61,11 @@ function App() {
 
         <form onSubmit={handleSubmit}>
             <section>
-            <label htmlFor="firstname-field">Voornaam</label>
-            <input name="firstname"
-                   type="text"
-                   id="firstname-field"
-                   value={firstName}
-                   onChange={(e) => setFirstName(e.target.value)}
+            <Input
+            name="firstname"
+            label="Voornaam"
+            inputType="text"
+            value={firstName}
             />
             </section>
             <section>
@@ -148,9 +148,8 @@ function App() {
                 />
                 <label htmlFor="agree-terms">Ik ga akkoord met de voorwaarden</label>
             </section>
-
-
         </form>
+        <Button type="button">Verzend</Button>
     </>
   )
 }
