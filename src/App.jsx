@@ -18,7 +18,7 @@ function App() {
         setBananen(0)
     }
 
-    const [firstName, setFirstName] = useState('')
+    const [firstname, setFirstName] = useState('')
     const [lastname, setLastname] = useState('');
     const [age, setAge] = useState(0);
     const [zipcode, setZipcode] = useState('');
@@ -28,7 +28,20 @@ function App() {
     const [agreeTerms, toggleAgreeTerms] = useState(false);
     const handleSubmit = () => {
         e.preventDefault()
-
+        function handleSubmit(e) {
+            e.preventDefault();
+            console.log(`
+    Voornaam: ${firstname}, 
+    Achternaam: ${lastname}, 
+    Leeftijd: ${age}, 
+    Postcode: ${zipcode}, 
+    Bezorgfrequentie: ${deliveryFrequency},
+    Bezorgtijdslot: ${deliveryTimeslot},
+    Opmerkingen: ${remark},
+    Algemene voorwaarden: ${agreeTerms}
+    `);
+            console.log(`Fruitmand bestelling - aardbeiden: ${aardbeien}, bananen: ${bananen}, appels: ${appels}, kiwi's: ${kiwis}`);
+        }
     }
 
   return (
@@ -65,34 +78,37 @@ function App() {
             name="firstname"
             label="Voornaam"
             inputType="text"
-            value={firstName}
+            value={firstname}
+            changeHandler={setFirstName}
             />
             </section>
             <section>
-            <label htmlFor="lastname-field">Achternaam</label>
-            <input name="lastname"
-                   type="text"
-                   id="lastname-field"
-                   value={lastname}
-                   onChange={(e) => setLastname(e.target.value)}
+                <Input
+                    name="lastname"
+                    label="Achternaam"
+                    inputType="text"
+                    value={lastname}
+                    changeHandler={setLastname}
+                />
             />
             </section>
             <section>
-            <label htmlFor="age-field">Leeftijd</label>
-            <input name="age"
-                   type="text"
-                   id="age-field"
-                   value={age}
-                   onChange={(e) => setAge(e.target.value)}
-            />
+                <Input
+                    name="age"
+                    label="Leeftijd"
+                    inputType="number"
+                    value={age}
+                    changeHandler={setAge}
+                />
             </section>
             <section>
-            <label htmlFor="zipcode-field">Postcode</label>
-            <input name="zipcode"
-                   type="text"
-                   id="zipcode-field"
-                   value={zipcode}
-                   onChange={(e) => setZipcode(e.target.value)}
+                <Input
+                    name="zipcode"
+                    label="Postcode"
+                    inputType="text"
+                    value={zipcode}
+                    changeHandler={setZipcode}
+                />
             />
             </section>
             <section>
